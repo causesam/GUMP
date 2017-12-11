@@ -410,7 +410,11 @@ class GUMP
                         if (strstr($rule, ',') !== false) {
                             $rule   = explode(',', $rule);
                             $method = 'validate_'.$rule[0];
-                            $param  = $rule[1];
+                            $param  = '';
+                            for ($ruleIndex=1; $ruleIndex < count($rule) ; $ruleIndex++) {
+                                if($ruleIndex!=1)$param.=',';
+                                $param.=$rule[$ruleIndex];
+                            }
                             $rule   = $rule[0];
 
                             // If there is a reference to a field
